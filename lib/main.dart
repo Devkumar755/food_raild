@@ -15,12 +15,9 @@ void main() {
       initialRoute: AppRoutes.splash,
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
+      themeMode: ThemeMode.light,
       getPages: AppPages.getAppPages,
       initialBinding: DependencyInjection(),
-        builder: (context, child) {
-       AppResponsive.init(context);
-      return child!;
-  },
     ),
   );
 }

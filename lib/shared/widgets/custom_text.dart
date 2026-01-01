@@ -41,7 +41,7 @@ class CustomText extends StatelessWidget {
       text,
       textAlign: align,
       maxLines: maxLines,
-      overflow: overflow ?? TextOverflow.ellipsis,
+      overflow: overflow ,
       style: _resolveStyle(context),
     );
   }
@@ -52,7 +52,7 @@ class CustomText extends StatelessWidget {
         const TextStyle();
 
     return baseStyle.copyWith(
-      fontSize: fontSize ?? baseStyle.fontSize ?? AppFont.s14,
+      fontSize: fontSize ?? baseStyle.fontSize ?? 14,
       fontWeight: fontWeight ?? baseStyle.fontWeight ?? FontWeight.w400,
       color: color ?? baseStyle.color,
       letterSpacing: letterSpacing ?? baseStyle.letterSpacing,

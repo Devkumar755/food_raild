@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.7.3
   google_fonts: ^6.3.3
+  solar_icons: ^0.0.5
+  sidebarx: ^0.17.2
 
 dev_dependencies:
   flutter_test:

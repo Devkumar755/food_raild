@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_rail/core/resources/app_colors.dart';
 
 import '../../core/utils/responsive_layout.dart';
 
@@ -67,7 +68,7 @@ class CustomButton extends StatelessWidget {
     // Layout
     this.width,
     this.height,
-    this.padding,
+    this.padding = EdgeInsets.zero,
     this.contentAlignment = MainAxisAlignment.center,
   });
 
@@ -76,10 +77,10 @@ class CustomButton extends StatelessWidget {
     final theme = Theme.of(context);
 
     // --- RESPONSIVE DEFAULTS ---
-    final double effectiveHeight = height ?? _responsiveHeight();
-    final double effectiveRadius = borderRadius ?? AppRadius.md;
+    final double effectiveHeight = height ?? 58;
+    final double effectiveRadius = borderRadius ?? 20;
     final double effectiveElevation = elevation ?? 0;
-    final double effectiveBorderWidth = borderWidth ?? AppResponsive.w(0.4);
+    final double effectiveBorderWidth = borderWidth ?? 0.4;
 
     Color effectiveBg = backgroundColor ??
         (type == ButtonType.elevated
@@ -89,7 +90,7 @@ class CustomButton extends StatelessWidget {
     Color effectiveFg = foregroundColor ??
         (type == ButtonType.elevated
             ? Colors.white
-            : theme.primaryColor);
+            : AppColors.primaryFontColor);
 
     Color effectiveBorder = borderColor ??
         (type == ButtonType.outlined ? effectiveFg : Colors.transparent);
@@ -113,7 +114,6 @@ class CustomButton extends StatelessWidget {
       backgroundColor: WidgetStateProperty.all(effectiveBg),
       foregroundColor: WidgetStateProperty.all(effectiveFg),
       shape: WidgetStateProperty.all(shape),
-      padding: WidgetStateProperty.all(_determinePadding()),
       minimumSize:
           WidgetStateProperty.all(Size(width ?? 0, effectiveHeight)),
       overlayColor: type != ButtonType.elevated
@@ -135,41 +135,7 @@ class CustomButton extends StatelessWidget {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // RESPONSIVE HELPERS
-  // ---------------------------------------------------------------------------
 
-  double _responsiveHeight() {
-    switch (AppResponsive.screenSize) {
-      case ScreenSize.xs:
-        return 42;
-      case ScreenSize.sm:
-        return 46;
-      case ScreenSize.md:
-        return 50;
-      case ScreenSize.lg:
-        return 54;
-      case ScreenSize.xl:
-        return 58;
-    }
-  }
-
-  EdgeInsetsGeometry _determinePadding() {
-    if (padding != null) return padding!;
-
-    if (layout == ButtonLayout.iconOnly) {
-      return EdgeInsets.all(AppSpacing.sm);
-    }
-
-    return EdgeInsets.symmetric(
-      horizontal: AppSpacing.lg,
-      vertical: AppSpacing.sm,
-    );
-  }
-
-  // ---------------------------------------------------------------------------
-  // CHILD BUILDERS
-  // ---------------------------------------------------------------------------
 
   Widget _buildChild(Color color, double height) {
     if (isLoading) {
@@ -177,7 +143,7 @@ class CustomButton extends StatelessWidget {
         height: height * 0.45,
         width: height * 0.45,
         child: CircularProgressIndicator(
-          strokeWidth: AppResponsive.w(0.6),
+          strokeWidth: 0.6,
           valueColor: AlwaysStoppedAnimation<Color>(color),
         ),
       );
@@ -195,8 +161,8 @@ class CustomButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: contentAlignment,
         children: isIconTrailing
-            ? [textWidget, SizedBox(width: AppSpacing.sm), iconWidget]
-            : [iconWidget, SizedBox(width: AppSpacing.sm), textWidget],
+            ? [textWidget, SizedBox(width: 10), iconWidget]
+            : [iconWidget, SizedBox(width: 10), textWidget],
       );
     }
 
@@ -209,7 +175,7 @@ class CustomButton extends StatelessWidget {
     return Icon(
       icon ?? Icons.help_outline,
       color: iconColor ?? color,
-      size: iconSize ?? AppIcon.md,
+      size: iconSize ?? 20,
     );
   }
 
@@ -218,8 +184,9 @@ class CustomButton extends StatelessWidget {
       text ?? '',
       textAlign: TextAlign.center,
       style: (textStyle ?? const TextStyle()).copyWith(
-        fontSize: textStyle?.fontSize ?? AppFont.s16,
+        fontSize: textStyle?.fontSize ?? 16,
         fontWeight: textStyle?.fontWeight ?? FontWeight.w600,
+
       ),
     );
   }
