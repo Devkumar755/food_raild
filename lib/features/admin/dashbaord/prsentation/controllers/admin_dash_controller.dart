@@ -44,39 +44,24 @@ class AdminDashController extends BaseController {
   List<BottomNavigationModelItem> getVisibleItems() {
     return [
       BottomNavigationModelItem(
-        labelName: "Menu",
-        routeId: AppRoutes.menu,
-        inactiveIcon: SolarIconsOutline.widget_6,
-        activeIcon: SolarIconsBold.widget_6,
-        routeName: AppRoutes.menu,
+        labelName: "Categories",
+        routeId: AppRoutes.categoriesPage,
+        routeName: AppRoutes.categoriesPage,
       ),
       BottomNavigationModelItem(
-        labelName: "Offers",
-        routeId: AppRoutes.offers,
-        inactiveIcon: SolarIconsOutline.confetti,
-        activeIcon: SolarIconsBold.confettiMinimalistic,
-        routeName: AppRoutes.offers,
+        labelName: "Continents",
+        routeId: AppRoutes.continentsPage,
+        routeName: AppRoutes.continentsPage,
       ),
       BottomNavigationModelItem(
-        labelName: "Home",
-        routeId: AppRoutes.dashboard,
-        inactiveIcon: Icons.home_outlined,
-        activeIcon: SolarIconsBold.home1,
-        routeName: AppRoutes.dashboard,
+        labelName: "Products",
+        routeId: AppRoutes.productList,
+        routeName: AppRoutes.productList,
       ),
       BottomNavigationModelItem(
-        labelName: "Profile",
-        routeId: AppRoutes.profile,
-        inactiveIcon: SolarIconsOutline.user,
-        activeIcon: SolarIconsBold.user,
-        routeName: AppRoutes.profile,
-      ),
-      BottomNavigationModelItem(
-        labelName: "More",
-        routeId: AppRoutes.more,
-        inactiveIcon: SolarIconsOutline.listDownMinimalistic,
-        activeIcon: SolarIconsBold.listDownMinimalistic,
-        routeName: AppRoutes.more,
+        labelName: "Restaurants",
+        routeId: AppRoutes.restaurantList,
+        routeName: AppRoutes.restaurantList,
       ),
     ];
   }

@@ -348,7 +348,6 @@ class ResponsiveScaffold extends StatelessWidget {
     final controller =
         sidebarController ??
         SidebarXController(selectedIndex: 0, extended: true);
-
     final defaultTheme = SidebarXTheme(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(

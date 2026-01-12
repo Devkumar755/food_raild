@@ -30,7 +30,9 @@ class CustomTextFormField extends StatefulWidget {
   final Color? fillColor;
   final bool isLabelRequired;
   final bool isFilled;
-  final double width;
+  final double? width;
+  final double? height;
+  final bool isPrefixIconRequired;
 
   CustomTextFormField({
     super.key,
@@ -53,7 +55,9 @@ class CustomTextFormField extends StatefulWidget {
     this.fillColor,
     this.isFilled = true,
     this.isLabelRequired = false,
-    this.width = 58
+    this.isPrefixIconRequired = false,
+    this.width ,
+    this.height = 58
   }) : obscureText = obscureText ?? type.isObscure;
 
   @override
@@ -79,7 +83,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     }
 
     return SizedBox(
-      height: widget.width,
+      height:  widget.height,
+      width: widget.width,
       child: TextFormField(
         controller: widget.controller,
         validator: widget.validator ?? widget.type.validator,
@@ -121,7 +126,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         fontSize: 14,
         color: AppColors.secondaryFontColor,
       ),
-      prefixIcon: _wrapIcon(widget.prefixIcon),
+      prefixIcon:(widget.isPrefixIconRequired)? _wrapIcon(widget.prefixIcon) : null ,
       suffixIcon: _buildSuffixIcon(),
 
       contentPadding: widget.contentPadding ,

@@ -120,6 +120,34 @@ class ResponsiveBuilder extends StatelessWidget {
   }
 }
 
+class ResponsiveLayout extends StatelessWidget {
+  final Widget mobile;
+  final Widget? tablet;
+  final Widget desktop;
+
+  const ResponsiveLayout({
+    super.key,
+    required this.mobile,
+    this.tablet,
+    required this.desktop,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveBuilder(
+      builder: (context, screenInfo) {
+        if (screenInfo.deviceType == DeviceType.desktop) {
+          return desktop;
+        }
+        if (screenInfo.deviceType == DeviceType.tablet && tablet != null) {
+          return tablet!;
+        }
+        return mobile;
+      },
+    );
+  }
+}
+
 extension ResponsiveContext on BuildContext {
   ScreenInfo get screenInfo => ResponsiveManager.getScreenInfo(this);
 
